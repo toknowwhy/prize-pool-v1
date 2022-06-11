@@ -71,4 +71,9 @@ interface IPrizePool {
      * @return The draw id.
      */
     function getDrawId() external view returns (uint32);
+
+    /**
+     * @return The bet coin.
+     */
+    function getBetCoin() external view returns (string memory);
 }

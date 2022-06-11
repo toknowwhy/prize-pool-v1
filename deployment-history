@@ -1,4 +1,24 @@
 Deploying PrizePool...
+PrizePool deployed at 0x319Ad4222c47e6968c9285DE45C4826efb2BBAb9
+
+Deploying YesTicket...
+YesTicket deployed at 0xB608C87bA350f39042b2C4b7721898f46A602D6B
+
+Deploying NoTicket...
+NoTicket deployed at 0xfcDaF500C69277E09C6f02558A6f4B577ccA2873
+
+Setting tickets on prize pool...
+Set ticket!
+
+
+
+
+============
+
+
+
+
+Deploying PrizePool...
 PrizePool deployed at 0x767Da80474E07b989ffD6d13e7c8aBE7922f9bBc
 
 Deploying YesTicket...

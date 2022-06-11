@@ -146,6 +146,10 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
         return drawId;
     }
 
+    function getBetCoin() external view override returns (string memory) {
+        return betCoin;
+    }
+
     /// @inheritdoc IPrizePool
     function isDrawOver() external view override returns (bool) {
         return _isDrawOver();
