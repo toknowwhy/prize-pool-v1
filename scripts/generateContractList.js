@@ -54,7 +54,7 @@ networkDeploymentPaths.forEach((networkDeploymentPath) => {
 });
 
 fs.writeFile(
-  `${__dirname}/../contracts.json`,
+  `${__dirname}/../../the-unit-frontend/src/models/contract-data/contracts.json`,
   JSON.stringify(contractList),
   (err) => {
     if (err) {

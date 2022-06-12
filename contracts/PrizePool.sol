@@ -95,6 +95,9 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
         override
         nonReentrant
     {
+        require(!_isDrawOver(), "This round has ended!");
+        require(msg.value >= 10 ** 16, "Minimum deposit is 0.01!");
+
         ITicket _ticket = _bet ? yesTicket : noTicket;
         _mint(msg.sender, msg.value, _ticket);
 
@@ -207,6 +210,7 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
     }
 
     function pushResult(uint8 _result) external override onlyRole(MANAGER_ROLE) returns (bool) {
+        require(!_isDrawOver(), "This round has ended!");
         results.push(_result);
         emit ResultSet(drawId, _result);
         return true;
@@ -221,7 +225,7 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
      * @return True if the beacon period is over, false otherwise
      */
     function _isDrawOver() internal view returns (bool) {
-        return _drawPeriodEndAt() <= _currentTime();
+        return _drawPeriodEndAt() <= _currentTime() || results.length == 13;
     }
 
     function _isEntering() internal view returns (bool) {
