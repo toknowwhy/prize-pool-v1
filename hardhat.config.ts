@@ -39,6 +39,20 @@ const config: HardhatUserConfig = {
       accounts: {
         mnemonic,
       },
+    },
+    mumbai: {
+        chainId: 80001,
+        url: 'https://rpc-mumbai.maticvigil.com',
+        accounts: {
+            mnemonic,
+        },
+    },
+    fuji: {
+        chainId: 43113,
+        url: 'https://api.avax-test.network/ext/bc/C/rpc',
+        accounts: {
+            mnemonic,
+        },
     }
   },
   namedAccounts: {

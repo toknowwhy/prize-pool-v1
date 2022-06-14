@@ -1,3 +1,80 @@
+
+
+
+
+Mumbai
+
+Deploying PrizePool...
+PrizePool deployed at 0x1234BeF650D916c2cC2cF098a8264626C478B3f7
+
+Deploying YesTicket...
+YesTicket deployed at 0x2258C3C146F43ce42146A2604091B7ec9a991FB4
+
+Deploying NoTicket...
+NoTicket deployed at 0x18e552b888D38c0a75E1C19935284b88d3De602A
+
+Setting tickets on prize pool...
+Set ticket!
+
+
+
+
+
+Fuji
+
+Deploying PrizePool...
+PrizePool deployed at 0x1234BeF650D916c2cC2cF098a8264626C478B3f7
+
+Deploying YesTicket...
+YesTicket deployed at 0x2258C3C146F43ce42146A2604091B7ec9a991FB4
+
+Deploying NoTicket...
+NoTicket deployed at 0x18e552b888D38c0a75E1C19935284b88d3De602A
+
+Setting tickets on prize pool...
+Set ticket!
+
+
+
+
+Rinkeby
+
+Deploying PrizePool...
+PrizePool deployed at 0x02e50d4BabA287D90fcE75cCb210cEC53D34a30D
+
+Deploying YesTicket...
+YesTicket deployed at 0xD4685a7BD5f916d5232E4dcc8350d68E32207485
+
+Deploying NoTicket...
+NoTicket deployed at 0x13601Eb2cf69a510a20f8c793E5b9BBFb470c31E
+
+Setting tickets on prize pool...
+Set ticket!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================================================================
+
+
+
+
+
+
+
+
 Deploying PrizePool...
 PrizePool deployed at 0xcE5Beac46349B69B34B58E597562Cf1C12f2C419
 

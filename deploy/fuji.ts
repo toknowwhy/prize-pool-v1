@@ -12,7 +12,7 @@ export default async function deployToRinkeby(hardhat: HardhatRuntimeEnvironment
   const calculatedBeaconPeriodSeconds = 86400 * 13;
   const tokenDecimals = 18;
 
-  dim(`Deploying on Rinkeby...`);
+  dim(`Deploying on Fuji...`);
 
   const prizePoolResult = await deployAndLog('PrizePool', {
     from: deployer,
