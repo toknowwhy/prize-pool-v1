@@ -47,6 +47,7 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
     uint32 internal drawId;
     
     uint8 public constant TIERS_LENGTH = 13;
+
     uint8[] internal results;
 
     /* ============ Constructor ============ */
@@ -161,7 +162,7 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
     /// @inheritdoc IPrizePool
     function claim() external override returns (uint256) {
         require(_isDrawOver(), "This round has not ended yet!");
-        bool isEntering = _isEntering();
+        bool isEntering = !_hasNo();
         uint256 totalBalance = _ticketSupply(isEntering);
         ITicket ticket = isEntering ? yesTicket : noTicket;
         uint256 userBalance = ticket.balanceOf(msg.sender);
@@ -225,17 +226,17 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
      * @return True if the beacon period is over, false otherwise
      */
     function _isDrawOver() internal view returns (bool) {
-        return _drawPeriodEndAt() <= _currentTime() || results.length == 13;
+
+        return _drawPeriodEndAt() <= _currentTime() || _hasNo() || results.length == TIERS_LENGTH;
     }
 
-    function _isEntering() internal view returns (bool) {
-        uint total = 0;
+    function _hasNo() internal view returns (bool) {
         for (uint j=0; j<results.length; j++) {
-            if (results[j] == 1) {
-                total++;
+            if (results[j] == -1) {
+                return true;
             }
         }
-        return total >= 8;
+        return false;
     }
 
     function _balance() internal view returns (uint256) {
