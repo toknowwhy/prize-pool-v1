@@ -20,7 +20,7 @@ export default async function deployToRinkeby(hardhat: HardhatRuntimeEnvironment
       defenderRelayer,
       1,
       'fantom',
-      1654905600,
+      1656924668,
       calculatedBeaconPeriodSeconds,
     ],
     skipIfAlreadyDeployed: true,

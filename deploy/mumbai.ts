@@ -3,7 +3,7 @@ import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../scripts/deployAndLog';
 import { setTicket } from '../scripts/setTicket';
 
-export default async function deployToRinkeby(hardhat: HardhatRuntimeEnvironment) {
+export default async function deployToMumbai(hardhat: HardhatRuntimeEnvironment) {
 
   const { getNamedAccounts, ethers } = hardhat;
   const { deployer, defenderRelayer } = await getNamedAccounts();

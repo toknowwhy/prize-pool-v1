@@ -232,7 +232,7 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
 
     function _hasNo() internal view returns (bool) {
         for (uint j=0; j<results.length; j++) {
-            if (results[j] == -1) {
+            if (results[j] < 0) {
                 return true;
             }
         }
