@@ -48,7 +48,7 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
     
     uint8 public constant TIERS_LENGTH = 13;
 
-    uint8[] internal results;
+    int8[] internal results;
 
     /* ============ Constructor ============ */
 
@@ -210,14 +210,14 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
         return block.timestamp;
     }
 
-    function pushResult(uint8 _result) external override onlyRole(MANAGER_ROLE) returns (bool) {
+    function pushResult(int8 _result) external override onlyRole(MANAGER_ROLE) returns (bool) {
         require(!_isDrawOver(), "This round has ended!");
         results.push(_result);
         emit ResultSet(drawId, _result);
         return true;
     }
 
-    function getResults() external view override returns (uint8[] memory) {
+    function getResults() external view override returns (int8[] memory) {
         return results;
     }
 
@@ -232,7 +232,7 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
 
     function _hasNo() internal view returns (bool) {
         for (uint j=0; j<results.length; j++) {
-            if (results[j] < 0) {
+            if (results[j] == -1) {
                 return true;
             }
         }

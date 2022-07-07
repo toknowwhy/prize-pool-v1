@@ -1,13 +1,11 @@
-Rinkeby
-
 Deploying PrizePool...
-PrizePool deployed at 0xEae5D18D994074924674cDa03807Bc94EB761e71
+PrizePool deployed at 0xaf714A08E0A93d9ce62c5c7dbA00441DE3bc08d7
 
 Deploying YesTicket...
-YesTicket deployed at 0x0432c1E05C61D6cEb4D074ad88B6AE4D26143a3f
+YesTicket deployed at 0x428f2FacC066e5A20fC25C17b9BD979CE5E53382
 
 Deploying NoTicket...
-NoTicket deployed at 0xb7399C9b7664051E4c61F7cAfb32De8a74A6CFd0
+NoTicket deployed at 0xa459ea4C351eDB10760fb343d7059577120cC83f
 
 Setting tickets on prize pool...
 Set ticket!
@@ -17,7 +15,7 @@ Set ticket!
 
 
 
-
+ 
 
 
 

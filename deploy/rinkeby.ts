@@ -1,4 +1,4 @@
-import { dim } from 'chalk';
+import { cyan } from '../scripts/colors';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../scripts/deployAndLog';
 import { setTicket } from '../scripts/setTicket';
@@ -12,7 +12,7 @@ export default async function deployToRinkeby(hardhat: HardhatRuntimeEnvironment
   const calculatedBeaconPeriodSeconds = 86400 * 13;
   const tokenDecimals = 18;
 
-  dim(`Deploying on Rinkeby...`);
+  cyan('\nDeploying on Rinkeby...\n');
 
   const prizePoolResult = await deployAndLog('PrizePool', {
     from: deployer,
@@ -20,7 +20,7 @@ export default async function deployToRinkeby(hardhat: HardhatRuntimeEnvironment
       defenderRelayer,
       1,
       'fantom',
-      1656924668,
+      1656931617,
       calculatedBeaconPeriodSeconds,
     ],
     skipIfAlreadyDeployed: true,

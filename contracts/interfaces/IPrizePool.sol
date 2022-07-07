@@ -6,7 +6,7 @@ import "./ITicket.sol";
 
 interface IPrizePool {
 
-    event ResultSet(uint32 indexed drawId, uint8 result);
+    event ResultSet(uint32 indexed drawId, int8 result);
 
     /// @dev Event emitted when assets are deposited
     event Deposited(
@@ -42,10 +42,10 @@ interface IPrizePool {
     /// @return True if ticket has been successfully set.
     function setTicket(ITicket yesTicket, ITicket noTicket) external returns (bool);
 
-    function getResults() external view returns (uint8[] memory);
+    function getResults() external view returns (int8[] memory);
 
     /// will be called by Defender autotask, 1 in The Unit, -1 not in
-    function pushResult(uint8 result) external returns (bool);
+    function pushResult(int8 result) external returns (bool);
 
     function claim() external returns (uint256);
 

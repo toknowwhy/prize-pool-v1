@@ -1,4 +1,4 @@
-import { dim } from 'chalk';
+import { cyan } from '../scripts/colors';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { deployAndLog } from '../scripts/deployAndLog';
 import { setTicket } from '../scripts/setTicket';
@@ -12,7 +12,7 @@ export default async function deployToMumbai(hardhat: HardhatRuntimeEnvironment)
   const calculatedBeaconPeriodSeconds = 86400 * 13;
   const tokenDecimals = 18;
 
-  dim(`Deploying on Mumbai...`);
+  cyan('\nDeploying on Mumbai...\n');
 
   const prizePoolResult = await deployAndLog('PrizePool', {
     from: deployer,
@@ -20,7 +20,7 @@ export default async function deployToMumbai(hardhat: HardhatRuntimeEnvironment)
       defenderRelayer,
       1,
       'fantom',
-      1654905600,
+      1656931617,
       calculatedBeaconPeriodSeconds,
     ],
     skipIfAlreadyDeployed: true,
