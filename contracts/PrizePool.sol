@@ -50,6 +50,10 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
 
     int8[] internal results;
 
+    uint256 internal finalBalance;
+    uint256 internal finalYesBalance;
+    uint256 internal finalNoBalance;
+
     /* ============ Constructor ============ */
 
     /// @notice Deploy the Prize Pool
@@ -69,6 +73,9 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
         betCoin = _betCoin;
         drawPeriodStartedAt = _beaconPeriodStart;
         drawPeriodSeconds = _drawPeriodSeconds;
+        finalBalance = 0;
+        finalYesBalance = 0;
+        finalNoBalance = 0;
         _setupRole(MANAGER_ROLE, _manager);
     }
 
@@ -196,6 +203,10 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
     /// @notice The current total of tickets.
     /// @return Ticket total supply.
     function _ticketSupply(bool _bet) internal view returns (uint256) {
+        uint256 _finalBalance = _bet ? finalYesBalance : finalNoBalance;
+        if (_finalBalance > 0) {
+            return _finalBalance;
+        } 
         ITicket _ticket = _bet ? yesTicket : noTicket;
         return _ticket.totalSupply();
     }
@@ -213,6 +224,12 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
     function pushResult(int8 _result) external override onlyRole(MANAGER_ROLE) returns (bool) {
         require(!_isDrawOver(), "This round has ended!");
         results.push(_result);
+        if (_isDrawOver()) {
+            finalBalance = _balance();
+            finalYesBalance = _ticketSupply(true);
+            finalNoBalance = _ticketSupply(false);
+            emit LastResultSet(drawId, _result, finalBalance, finalYesBalance, finalNoBalance);
+        }
         emit ResultSet(drawId, _result);
         return true;
     }
@@ -240,6 +257,9 @@ contract PrizePool is IPrizePool, Ownable, AccessControl, ReentrancyGuard {
     }
 
     function _balance() internal view returns (uint256) {
+        if (finalBalance > 0) {
+            return finalBalance;
+        }
         return address(this).balance;
     }
 

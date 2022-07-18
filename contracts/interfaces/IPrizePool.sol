@@ -8,6 +8,8 @@ interface IPrizePool {
 
     event ResultSet(uint32 indexed drawId, int8 result);
 
+    event LastResultSet(uint32 indexed drawId, int8 result, uint256 finalBalance, uint256 finalYesBalance, uint256 finalNoBalance);
+
     /// @dev Event emitted when assets are deposited
     event Deposited(
         address indexed user,
